@@ -28,3 +28,13 @@ function createEl(tag, props = {}) {
 
   return node;
 }
+
+function render() {
+  const root = document.getElementById("app");
+  root.innerHTML = "";
+  const header = createEl("h1", { text: "Hello World" });
+  root.appendChild(header);
+}
+
+// Initial render
+render();
