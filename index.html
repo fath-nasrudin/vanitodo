@@ -6,8 +6,57 @@
     <link rel="stylesheet" href="output.css" />
     <title>Vanitodo</title>
   </head>
-  <body>
-    <div id="app"></div>
-    <script src="main.js"></script>
+  <body class="pt-12">
+    <main class="mx-auto max-w-3xl">
+      <!-- title -->
+      <h1 class="text-2xl font-bold">Inbox</h1>
+      <!-- section -->
+      <div>
+        <h2 class="font-bold border-b border-border">overdue</h2>
+        <ul>
+          <!-- todo item -->
+          <li
+            class="relative border-b border-border flex gap-4 items-start py-2"
+          >
+            <input class="grow-0 relative top-1" type="checkbox" />
+            <div>
+              <h3 class="text-sm">Membuat aplikasi todolist</h3>
+              <p class="text-xs">
+                Ini adalah descriptionnya untuk aplikasi ini
+              </p>
+              <div class="text-xs">
+                <button>27 Nov 2025</button>
+                <button>P1</button>
+              </div>
+            </div>
+          </li>
+
+          <!-- todo item -->
+          <li class="relative border-b flex gap-4 items-start py-2">
+            <input class="grow-0 relative top-1" type="checkbox" />
+            <div>
+              <h3 class="text-sm">Membuat aplikasi todolist</h3>
+              <p class="text-xs text-muted-foreground">
+                Ini adalah descriptionnya untuk aplikasi ini
+              </p>
+              <div class="text-xs">
+                <button class="text-destructive">27 Nov 2025</button>
+                <button>P1</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- overdue section -->
+
+      <!-- checkbox -->
+      <!-- todo title -->
+      <!-- task description -->
+      <!-- task footer -->
+      <!-- date -->
+      <!-- priority -->
+      <!-- todo section -->
+      <!-- done section -->
+    </main>
   </body>
 </html>
