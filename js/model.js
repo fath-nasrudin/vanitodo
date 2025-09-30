@@ -3,7 +3,7 @@ const state = {
 };
 
 export function getTodos() {
-  return todos;
+  return state.todos;
 }
 
 export function addTodo(text) {
