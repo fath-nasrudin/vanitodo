@@ -1,5 +1,22 @@
 const state = {
-  todos: [],
+  todos: [
+    {
+      id: 1,
+      title: "Membuat aplikasi todolist",
+      description: "Ini adalah descriptionnya untuk aplikasi ini",
+      dueDate: "2025-9-30",
+      priority: "P1",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Membuat aplikasi todolist",
+      description: "Ini adalah descriptionnya untuk aplikasi ini",
+      dueDate: "2025-10-05",
+      priority: "high",
+      completed: true,
+    },
+  ],
 };
 
 export function getTodos() {

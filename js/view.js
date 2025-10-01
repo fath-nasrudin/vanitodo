@@ -71,41 +71,31 @@ export function TodoItem(todoData) {
   });
 }
 
-export function TodoList() {
-  // const todos = getTodos();
-  const todos = [
-    {
-      title: "Membuat aplikasi todolist",
-      description: "Ini adalah descriptionnya untuk aplikasi ini",
-      dueDate: "27 Nov 2025",
-      priority: "P1",
-    },
-    {
-      title: "Membuat aplikasi todolist",
-      description: "Ini adalah descriptionnya untuk aplikasi ini",
-      dueDate: "27 Nov 2025",
-      priority: "P1",
-    },
-  ];
+export function TodoList(todos) {
   return createEl("ul", {
     children: todos.map((item) => TodoItem(item)),
   });
 }
 
-export function TodoSection() {
+export function TodoSection({ title = "Untitled", list }) {
   return createEl("div", {
     children: [
       createEl("h2", {
-        text: "Overdue",
+        text: title,
         className: "font-bold border-b border-border",
       }),
-      TodoList(),
+      TodoList(list),
     ],
   });
 }
 
-export function App() {
+export function App({ sections }) {
   // main container
+
+  const todoSections = sections.map((section) =>
+    TodoSection({ title: section.title, list: section.list })
+  );
+
   const main = createEl("main", {
     className: "mx-auto max-w-3xl p-4",
     children: [
@@ -114,7 +104,7 @@ export function App() {
         text: "Inbox",
         className: "text-2xl font-bold",
       }),
-      TodoSection(),
+      ...todoSections,
     ],
   });
   return main;
