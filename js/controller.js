@@ -1,12 +1,6 @@
 import { App } from "./view.js";
 import { getTodos } from "./model.js";
 
-function isOverdue(dueDate) {
-  if (!dueDate) return false;
-  if (Date.now() >= new Date(dueDate)) return true;
-  return false;
-}
-
 function getSections() {
   let overdueList, todoList, doneList;
   todoList = getTodos().filter(
