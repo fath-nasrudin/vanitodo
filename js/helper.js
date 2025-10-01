@@ -1,4 +1,4 @@
-function isOverdue(dueDate) {
+export function isOverdue(dueDate) {
   if (!dueDate) return false;
   if (Date.now() >= new Date(dueDate)) return true;
   return false;
