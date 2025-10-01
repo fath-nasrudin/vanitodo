@@ -16,7 +16,7 @@ export function createEl(tag, props = {}) {
 
     if (key.startsWith("on") && typeof value === "function") {
       node.addEventListener(key.slice(2).toLowerCase(), value);
-    } else {
+    } else if (value !== undefined && value !== false) {
       node.setAttribute(key, value);
     }
   }

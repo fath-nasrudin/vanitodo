@@ -1,13 +1,14 @@
-import { createEl } from "./helper.js";
+import { createEl, isOverdue } from "./helper.js";
 export function TodoItem(todoData) {
   const checkbox = createEl("input", {
     type: "checkbox",
     className: "grow-0 relative top-1",
+    checked: todoData.completed,
   });
 
   const todoTitle = createEl("h3", {
     text: todoData.title,
-    className: "text-sm",
+    className: todoData.completed ? "line-through " : "text-sm",
   });
 
   const todoDescription = createEl("p", {
@@ -20,6 +21,10 @@ export function TodoItem(todoData) {
     children: [
       // dueDate
       createEl("button", {
+        className:
+          isOverdue(todoData.dueDate) && !todoData.completed
+            ? "text-destructive"
+            : "",
         text: todoData.dueDate,
       }),
       // priority
