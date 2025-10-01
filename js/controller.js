@@ -1,21 +1,26 @@
 import { App } from "./view.js";
-import { getTodos } from "./model.js";
+import * as Model from "./model.js";
 import { isOverdue } from "./helper.js";
 function getSections() {
   let overdueList, todoList, doneList;
-  todoList = getTodos().filter(
+  todoList = Model.getTodos().filter(
     (todo) => !todo.completed && !isOverdue(todo.dueDate)
   );
-  overdueList = getTodos().filter(
+  overdueList = Model.getTodos().filter(
     (todo) => !todo.completed && isOverdue(todo.dueDate)
   );
-  doneList = getTodos().filter((todo) => todo.completed);
+  doneList = Model.getTodos().filter((todo) => todo.completed);
 
   return [
     { title: "Overdue", list: overdueList },
     { title: "Todo", list: todoList },
     { title: "Done", list: doneList },
   ];
+}
+
+export function toggleTodo(todoId) {
+  Model.toggleTodo(todoId);
+  renderApp();
 }
 
 export function renderApp() {

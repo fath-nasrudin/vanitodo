@@ -1,9 +1,11 @@
 import { createEl, isOverdue } from "./helper.js";
+import * as Controller from "./controller.js";
 export function TodoItem(todoData) {
   const checkbox = createEl("input", {
     type: "checkbox",
     className: "grow-0 relative top-1",
     checked: todoData.completed,
+    onchange: () => Controller.toggleTodo(todoData.id),
   });
 
   const todoTitle = createEl("h3", {
