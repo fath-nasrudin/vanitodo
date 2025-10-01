@@ -8,7 +8,7 @@ export function TodoItem(todoData) {
 
   const todoTitle = createEl("h3", {
     text: todoData.title,
-    className: todoData.completed ? "line-through " : "text-sm",
+    className: "text-sm " + (todoData.completed && "line-through"),
   });
 
   const todoDescription = createEl("p", {
