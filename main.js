@@ -43,11 +43,11 @@ function TodoItem(todoData) {
 
   const todoDescription = createEl("p", {
     text: todoData.description,
-    className: "text-xs",
+    className: "text-xs text-muted-foreground",
   });
 
   const todoFooter = createEl("div", {
-    className: "text-xs",
+    className: "text-xs flex items-center gap-4",
     children: [
       // dueDate
       createEl("button", {
@@ -65,6 +65,7 @@ function TodoItem(todoData) {
     children: [
       checkbox,
       createEl("div", {
+        className: "flex-1 flex flex-col gap-1",
         children: [todoTitle, todoDescription, todoFooter],
       }),
     ],
@@ -107,7 +108,7 @@ function TodoSection() {
 function App() {
   // main container
   const main = createEl("main", {
-    className: "mx-auto max-w-3xl",
+    className: "mx-auto max-w-3xl p-4",
     children: [
       // Title
       createEl("h1", {
