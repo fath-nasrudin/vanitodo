@@ -174,7 +174,13 @@ export function TodoItem(todoData) {
   });
 }
 
-export function TodoList(todos) {
+export function TodoList(todos = []) {
+  if (!todos.length) {
+    return createEl("p", {
+      text: "No Todo found. Reset filter or create todo first",
+      className: " mt-4 text-sm text-center text-muted-foreground",
+    });
+  }
   return createEl("ul", {
     children: todos.map((item) => TodoItem(item)),
   });
