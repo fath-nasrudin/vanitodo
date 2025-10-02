@@ -184,6 +184,10 @@ export function TodoSection({ title = "Untitled", list }) {
   function onDateChange(e) {
     Controller.setFilter(title, { date: e.target.value });
   }
+
+  const filterDate = Controller.getFilter({ key: title })?.date;
+  const datePickerText = filterDate ? filterDate : "Date";
+
   const Filter = () =>
     createEl("div", {
       className: "flex gap-8",
@@ -191,8 +195,7 @@ export function TodoSection({ title = "Untitled", list }) {
         createEl("div", {
           text: "Filter:",
         }),
-        // DateFilter(),
-        DatePicker(onDateChange),
+        DatePicker({ text: datePickerText, onchange: onDateChange }),
       ],
     });
   return createEl("div", {
@@ -213,7 +216,7 @@ export function TodoSection({ title = "Untitled", list }) {
   });
 }
 
-export function DatePicker(onchange) {
+export function DatePicker({ text, onchange }) {
   const date = createEl("input", {
     type: "date",
     className: "hidden",
@@ -223,8 +226,9 @@ export function DatePicker(onchange) {
   return createEl("div", {
     children: [
       createEl("button", {
-        text: "📅",
-        className: "p-2 bg-gray-200 rounded-lg hover:bg-gray-300",
+        text,
+        className:
+          "py-0.5 px-4 rounded-md cursor-pointer hover:bg-gray-300 text-xs border border-border",
         onclick: () => date.showPicker(),
       }),
       date,
@@ -242,7 +246,6 @@ export function DeleteAllTodosButton() {
 
 export function App({ sections }) {
   // main container
-  Controller.setFilter("todo", { date: "2025-10-11" });
   const todoSections = sections.map((section) =>
     TodoSection({ title: section.title, list: section.list })
   );

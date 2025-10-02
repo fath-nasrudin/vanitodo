@@ -47,6 +47,11 @@ export function deleteAllTodo() {
 
 export function setFilter(key, value) {
   Model.setFilter(key, value);
+  renderApp();
+}
+
+export function getFilter({ key }) {
+  return Model.getFilter(key);
 }
 
 export function renderApp() {

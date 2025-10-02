@@ -25,6 +25,10 @@ export function setFilter(key, value) {
   console.log(state.filter);
 }
 
+export function getFilter(key) {
+  return state.filter[key];
+}
+
 export function getTodos() {
   console.log(state.todos);
   return state.todos;
