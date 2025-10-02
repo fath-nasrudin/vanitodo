@@ -35,6 +35,11 @@ export function createTodo({
   renderApp();
 }
 
+export function deleteTodo(todoId) {
+  Model.deleteTodo(todoId);
+  renderApp();
+}
+
 export function renderApp() {
   const root = document.getElementById("app");
   root.innerHTML = "";

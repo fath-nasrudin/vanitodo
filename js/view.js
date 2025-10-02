@@ -152,6 +152,19 @@ export function TodoItem(todoData) {
   return createEl("li", {
     className: "relative border-b border-border flex gap-4 items-start py-2",
     children: [
+      createEl("button", {
+        className: "absolute cursor-pointer right-[2px] top-[4px]",
+        children: [
+          createEl("img", {
+            className: "h-4 w-4",
+            src: "../images/icons/trash.svg",
+            alt: "delete",
+          }),
+        ],
+        onclick: () => {
+          Controller.deleteTodo(todoData.id);
+        },
+      }),
       checkbox,
       createEl("div", {
         className: "flex-1 flex flex-col gap-1",
