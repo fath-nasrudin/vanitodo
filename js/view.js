@@ -181,13 +181,53 @@ export function TodoList(todos) {
 }
 
 export function TodoSection({ title = "Untitled", list }) {
+  function onDateChange(e) {
+    Controller.setFilter(title, { date: e.target.value });
+  }
+  const Filter = () =>
+    createEl("div", {
+      className: "flex gap-8",
+      children: [
+        createEl("div", {
+          text: "Filter:",
+        }),
+        // DateFilter(),
+        DatePicker(onDateChange),
+      ],
+    });
   return createEl("div", {
     children: [
-      createEl("h2", {
-        text: title,
-        className: "font-bold border-b border-border",
+      createEl("div", {
+        className: " border-b border-border",
+        children: [
+          createEl("h2", {
+            text: title,
+            className: "font-bold",
+          }),
+          Filter(),
+        ],
       }),
+
       TodoList(list),
+    ],
+  });
+}
+
+export function DatePicker(onchange) {
+  const date = createEl("input", {
+    type: "date",
+    className: "hidden",
+    onchange,
+  });
+
+  return createEl("div", {
+    children: [
+      createEl("button", {
+        text: "📅",
+        className: "p-2 bg-gray-200 rounded-lg hover:bg-gray-300",
+        onclick: () => date.showPicker(),
+      }),
+      date,
     ],
   });
 }
@@ -202,7 +242,7 @@ export function DeleteAllTodosButton() {
 
 export function App({ sections }) {
   // main container
-
+  Controller.setFilter("todo", { date: "2025-10-11" });
   const todoSections = sections.map((section) =>
     TodoSection({ title: section.title, list: section.list })
   );

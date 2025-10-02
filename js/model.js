@@ -17,10 +17,21 @@ const state = {
       completed: true,
     },
   ],
+  filter: {},
 };
 
+export function setFilter(key, value) {
+  state.filter[key] = value;
+  console.log(state.filter);
+}
+
 export function getTodos() {
+  console.log(state.todos);
   return state.todos;
+}
+
+export function getTodosByDate(date) {
+  return state.todos.filter((t) => t.dueDate === date);
 }
 
 export const priorityState = { LOW: "low", MEDIUM: "medium", HIGH: "high" };

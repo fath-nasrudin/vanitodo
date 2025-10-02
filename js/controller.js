@@ -45,6 +45,10 @@ export function deleteAllTodo() {
   renderApp();
 }
 
+export function setFilter(key, value) {
+  Model.setFilter(key, value);
+}
+
 export function renderApp() {
   const root = document.getElementById("app");
   root.innerHTML = "";
