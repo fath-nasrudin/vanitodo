@@ -23,6 +23,18 @@ export function toggleTodo(todoId) {
   renderApp();
 }
 
+export function createTodo({
+  title,
+  description,
+  completed,
+  priority,
+  dueDate,
+}) {
+  Model.addTodo({ title, description, completed, priority, dueDate });
+  console.log(Model.getTodos());
+  renderApp();
+}
+
 export function renderApp() {
   const root = document.getElementById("app");
   root.innerHTML = "";

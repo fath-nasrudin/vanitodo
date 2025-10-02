@@ -1,5 +1,118 @@
 import { createEl, isOverdue } from "./helper.js";
 import * as Controller from "./controller.js";
+import { priorityState } from "./model.js";
+
+export function AddTodoForm() {
+  const form = createEl("form", {
+    className: "border border-border rounded-md flex flex-col gap-1 p-2",
+    onsubmit: (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const title = formData.get("title");
+      const description = formData.get("description");
+      const dueDate = formData.get("dueDate");
+      const priority = formData.get("priority");
+
+      Controller.createTodo({ title, description, dueDate, priority });
+      // console.log({ title, description, dueDate, priority });
+    },
+    children: [
+      // title
+      createEl("div", {
+        className: "flex flex-col",
+        children: [
+          createEl("label", {
+            className: "sr-only",
+            text: "Title",
+          }),
+          createEl("input", {
+            type: "text",
+            name: "title",
+            placeholder: "Create thing great",
+            className: "font-bold",
+          }),
+        ],
+      }),
+
+      // description
+      createEl("div", {
+        className: "flex flex-col",
+        children: [
+          createEl("label", {
+            text: "Description",
+            className: "sr-only",
+          }),
+          createEl("input", {
+            type: "textarea",
+            name: "description",
+            className: "text-sm",
+            placeholder: "Description",
+          }),
+        ],
+      }),
+
+      createEl("div", {
+        className: "flex gap-8",
+        children: [
+          // calendar. Gimana cara ubah tampilannya jadi misal 19 juni 2025
+          createEl("div", {
+            className: "flex flex-col",
+            children: [
+              createEl("label", {
+                text: "Due Date",
+                className: "sr-only",
+              }),
+              createEl("input", {
+                type: "date",
+                name: "dueDate",
+                className: "self-start",
+                placeholder: "Date",
+              }),
+            ],
+          }),
+          // Priority
+          createEl("div", {
+            children: [
+              createEl("label", {
+                text: "completed",
+                className: "sr-only",
+              }),
+              createEl("select", {
+                name: "priority",
+                children: Object.values(priorityState).map((state) =>
+                  createEl("option", {
+                    text: state,
+                    value: state,
+                  })
+                ),
+              }),
+            ],
+          }),
+        ],
+      }),
+
+      // horizontal line
+      createEl("hr", {
+        className: "border-t border-border pt-2",
+      }),
+
+      // button
+      createEl("div", {
+        className: "w-full flex justify-end",
+        children: [
+          createEl("button", {
+            text: "Add Task",
+            className:
+              "px-4 py-2 rounded-md bg-primary text-sm font-bold text-primary-foreground cursor-pointer",
+          }),
+        ],
+      }),
+    ],
+  });
+
+  return form;
+}
 export function TodoItem(todoData) {
   const checkbox = createEl("input", {
     type: "checkbox",
@@ -81,6 +194,7 @@ export function App({ sections }) {
         text: "Inbox",
         className: "text-2xl font-bold",
       }),
+      AddTodoForm(),
       ...todoSections,
     ],
   });

@@ -23,11 +23,25 @@ export function getTodos() {
   return state.todos;
 }
 
-export function addTodo(text) {
+export const priorityState = { LOW: "low", MEDIUM: "medium", HIGH: "high" };
+
+export function addTodo({
+  title,
+  description = null,
+  completed = false,
+  priority = priorityState.LOW,
+  dueDate = null,
+}) {
+  // validation
+  if (!title) throw new Error("Validation Error: Title field is required");
+
   state.todos.push({
     id: Date.now(),
-    text,
-    completed: false,
+    title,
+    description,
+    completed,
+    dueDate,
+    priority,
   });
 }
 
