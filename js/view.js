@@ -208,7 +208,7 @@ export function App({ sections }) {
   );
 
   const main = createEl("main", {
-    className: "mx-auto max-w-3xl p-4",
+    className: "mx-auto max-w-3xl p-4 space-y-6",
     children: [
       // Title
       createEl("h1", {
