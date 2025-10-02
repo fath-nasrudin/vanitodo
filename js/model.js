@@ -22,7 +22,7 @@ const state = {
       description:
         "Menyediakan form untuk tambah todo. Ketika user klik Add Todo, todo baru akan ditambahkan di daftar todo.",
       dueDate: "2025-10-05",
-      priority: "low",
+      priority: "medium",
       completed: true,
     },
 
@@ -32,6 +32,7 @@ const state = {
       description:
         "Menyediakan tombol delete di setiap todo. Ketika user klik tombol delete, todo akan dihapus dari list-10-05",
       priority: "low",
+      dueDate: "2025-10-05",
       completed: true,
     },
     {
@@ -47,7 +48,7 @@ const state = {
       title: "Menambahkan fitur filter by date di setiap section",
       description:
         "Menyediakan date picker di setiap section dan filter berdasarkan date yang dipilih",
-      priority: "low",
+      priority: "medium",
       dueDate: "2025-10-05",
       completed: true,
     },

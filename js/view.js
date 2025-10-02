@@ -145,6 +145,9 @@ export function TodoItem(todoData) {
       // priority
       createEl("button", {
         text: todoData.priority,
+        className: `badge ${
+          todoData.priority === priorityState.HIGH && "badge-red "
+        } ${todoData.priority === priorityState.MEDIUM && "badge-yellow "}`,
       }),
     ],
   });
