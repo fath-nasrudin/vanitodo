@@ -194,6 +194,14 @@ export function TodoSection({ title = "Untitled", list = [] }) {
     filteredList = list;
   }
 
+  const ResetFilter = () =>
+    createEl("button", {
+      className:
+        "ml-auto py-0.5 px-4 rounded-md cursor-pointer hover:bg-gray-300 text-xs border border-border",
+      text: "Reset Filter",
+      onclick: () => Controller.setFilter(title, null),
+    });
+
   const Filter = () =>
     createEl("div", {
       className: "flex gap-8",
@@ -202,6 +210,7 @@ export function TodoSection({ title = "Untitled", list = [] }) {
           text: "Filter:",
         }),
         DatePicker({ text: datePickerText, onchange: onDateChange }),
+        Controller.getFilter({ key: title }) && ResetFilter(),
       ],
     });
   return createEl("div", {
