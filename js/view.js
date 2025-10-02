@@ -192,6 +192,14 @@ export function TodoSection({ title = "Untitled", list }) {
   });
 }
 
+export function DeleteAllTodosButton() {
+  return createEl("button", {
+    text: "Delete All Todos",
+    className: "btn btn-destructive",
+    onclick: () => Controller.deleteAllTodo(),
+  });
+}
+
 export function App({ sections }) {
   // main container
 
@@ -207,6 +215,9 @@ export function App({ sections }) {
         text: "Inbox",
         className: "text-2xl font-bold",
       }),
+
+      DeleteAllTodosButton(),
+
       AddTodoForm(),
       ...todoSections,
     ],

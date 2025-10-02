@@ -45,6 +45,10 @@ export function addTodo({
   });
 }
 
+export function deleteAllTodo() {
+  state.todos = [];
+}
+
 export function toggleTodo(id) {
   const todo = state.todos.find((todo) => todo.id === id);
   if (todo) todo.completed = !todo.completed;

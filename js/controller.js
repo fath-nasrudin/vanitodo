@@ -40,6 +40,11 @@ export function deleteTodo(todoId) {
   renderApp();
 }
 
+export function deleteAllTodo() {
+  Model.deleteAllTodo();
+  renderApp();
+}
+
 export function renderApp() {
   const root = document.getElementById("app");
   root.innerHTML = "";
