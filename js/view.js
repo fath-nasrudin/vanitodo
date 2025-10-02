@@ -210,7 +210,7 @@ export function TodoSection({ title = "Untitled", list = [] }) {
 
   const Filter = () =>
     createEl("div", {
-      className: "flex gap-8",
+      className: "flex gap-8 text-sm",
       children: [
         createEl("div", {
           text: "Filter:",
