@@ -180,13 +180,19 @@ export function TodoList(todos) {
   });
 }
 
-export function TodoSection({ title = "Untitled", list }) {
+export function TodoSection({ title = "Untitled", list = [] }) {
   function onDateChange(e) {
     Controller.setFilter(title, { date: e.target.value });
   }
 
   const filterDate = Controller.getFilter({ key: title })?.date;
   const datePickerText = filterDate ? filterDate : "Date";
+  let filteredList;
+  if (filterDate) {
+    filteredList = list.filter((todo) => todo.dueDate === filterDate);
+  } else {
+    filteredList = list;
+  }
 
   const Filter = () =>
     createEl("div", {
@@ -211,7 +217,7 @@ export function TodoSection({ title = "Untitled", list }) {
         ],
       }),
 
-      TodoList(list),
+      TodoList(filteredList),
     ],
   });
 }
