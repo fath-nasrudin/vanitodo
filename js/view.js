@@ -268,14 +268,55 @@ export function DeleteAllTodosButton() {
   });
 }
 
+export function Profile({ name, position }) {
+  return createEl("div", {
+    children: [
+      createEl("h3", {
+        text: name,
+        className: "font-bold text-xl",
+      }),
+      createEl("p", {
+        text: position,
+        className: "text-muted-foreground",
+      }),
+    ],
+  });
+}
+
 export function App({ sections }) {
   // main container
   const todoSections = sections.map((section) =>
     TodoSection({ title: section.title, list: section.list })
   );
 
+  const user = {
+    name: "Fathurrohman",
+    position: "Software Engineer",
+  };
+
+  const header = createEl("header", {
+    className: "p-4 border-b border-border",
+
+    children: [
+      createEl("div", {
+        className: "flex items-end justify-between mx-auto w-full max-w-3xl",
+        children: [
+          // profile
+          Profile(user),
+          createEl("div", {
+            text: new Date().toLocaleDateString("id-ID", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            }),
+          }),
+        ],
+      }),
+    ],
+  });
+
   const main = createEl("main", {
-    className: "mx-auto max-w-3xl p-4 space-y-6",
+    className: "mx-auto w-full max-w-3xl p-4 space-y-6",
     children: [
       // Title
       createEl("h1", {
@@ -289,5 +330,11 @@ export function App({ sections }) {
       ...todoSections,
     ],
   });
-  return main;
+
+  const app = createEl("div", {
+    className: "flex flex-col gap-8",
+    children: [header, main],
+  });
+
+  return app;
 }
