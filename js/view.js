@@ -160,7 +160,7 @@ export function TodoItem(todoData) {
         children: [
           createEl("img", {
             className: "h-4 w-4",
-            src: "../images/icons/trash.svg",
+            src: "./images/icons/trash.svg",
             alt: "delete",
           }),
         ],
