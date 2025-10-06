@@ -4,7 +4,7 @@ A Todolist created with only vanilla JS.
 
 ## Live App
 
-[fath-nasrudin.github.io/vanitodo](fath-nasrudin.github.io/vanitodo)
+[https://fath-nasrudin.github.io/vanitodo](https://fath-nasrudin.github.io/vanitodo)
 
 ## How The UI and The Data Sync?
 
